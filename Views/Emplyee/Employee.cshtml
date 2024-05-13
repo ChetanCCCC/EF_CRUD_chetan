@@ -1,0 +1,44 @@
+﻿@model  EF_CRUD.context.ETable
+@{
+    ViewBag.Title = "Employee";
+}
+<style>
+    .error {
+        color: red;
+    }
+</style>
+
+@using (Html.BeginForm("AddEmployee", "Emplyee", FormMethod.Post))
+{
+    <div class="container">
+
+        <div class="form-group">
+            @Html.HiddenFor(m => m.EId)
+            <label>EmployeeName</label>
+            @Html.TextBoxFor(m => m.EName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.EName, "", new { @class = "error" })
+        </div>
+
+        <div class="form-group">
+            <label>EmployeeAddress</label>
+            @Html.TextBoxFor(m => m.EAddress, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.EAddress,null, new { @class = "error" })
+        </div>
+
+        <div class="form-group">
+            <label>EmployeeAge</label>
+            @Html.TextBoxFor(m => m.Eage, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Eage, "", new { @class = "error" })
+        </div>
+        <div class="form-group">
+            <label>Employeesallery</label>
+            @Html.TextBoxFor(m => m.Esallery, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Esallery, "", new { @class = "error" })
+        </div>
+        <div class="form-group">
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+}
+

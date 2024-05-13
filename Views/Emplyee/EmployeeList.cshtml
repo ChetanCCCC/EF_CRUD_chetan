@@ -1,0 +1,53 @@
+﻿@model IEnumerable<EF_CRUD.context.ETable>
+
+@{
+    ViewBag.Title = "EmployeeList";
+}
+
+<h2>EmployeeList</h2>
+
+<p>
+  @*//  @Html.ActionLink("New New Employee", "Employee")*@
+    @Html.ActionLink("New Employee", "Employee", null, new { @class = "btn btn-primary" })
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Eage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Esallery)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Eage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Esallery)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Employee", new { item.EId,item.EName,item.EAddress,item.Eage,item.Esallery }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EId }) |
+            @Html.ActionLink("Delete", "Delete", new { Eid=item.EId })
+        </td>
+    </tr>
+}
+
+</table>

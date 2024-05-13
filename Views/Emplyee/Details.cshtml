@@ -1,0 +1,41 @@
+﻿@model  EF_CRUD.context.ETable
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+    .error {
+        color: red;
+    }
+</style>
+
+
+<div class="container">
+
+    <div class="form-group">
+        @Html.HiddenFor(m => m.EId)
+        <label>EmployeeName</label>
+        @Html.TextBoxFor(m => m.EName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.EName, "", new { @class = "error" })
+    </div>
+
+    <div class="form-group">
+        <label>EmployeeAddress</label>
+        @Html.TextBoxFor(m => m.EAddress, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.EAddress, "", new { @class = "error" })
+    </div>
+
+    <div class="form-group">
+        <label>EmployeeAge</label>
+        @Html.TextBoxFor(m => m.Eage, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Eage, "", new { @class = "error" })
+    </div>
+    <div class="form-group">
+        <label>Employeesallery</label>
+        @Html.TextBoxFor(m => m.Esallery, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Esallery, "", new { @class = "error" })
+    </div>
+
+    @Html.ActionLink("Back to list", "EmployeeList", null, new { @class = "btn btn-primary" })
+</div>
+
+
