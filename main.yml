@@ -1,0 +1,27 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: self-hosted  # Uses your EC2 instance as the runner
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Stop IIS  # Stop IIS before publishing to release file locks
+      run: net stop W3SVC
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build project
+      run: dotnet publish -c Release -o C:\inetpub\Crest-Dev
+
+    - name: Restart IIS  # Restart IIS after publishing
+      run: net start W3SVC
